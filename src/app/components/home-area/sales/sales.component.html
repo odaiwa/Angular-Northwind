@@ -1,0 +1,11 @@
+<div class="box">
+    <p>
+        <!-- Attribute Directive : -->
+        <span [ngClass]="styling">Sales: </span>
+        <!-- Structural Directive (and also conditional rendering) -->
+        <span *ngIf="isWeekend()">Pizza | </span>
+        <!-- Structural Directive (and also displaying lists) -->
+        <span *ngFor="let d of desserts">{{d.name}} |</span>
+    </p>
+
+</div>

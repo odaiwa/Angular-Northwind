@@ -1,0 +1,17 @@
+<div class="box">
+
+    <!-- 4 types of binding -->
+
+    <!-- 1. Property Binding -->
+    <span [title]="tooltip">Order Form</span>
+
+    <!-- 2. Event Binding -->
+    <button (click)="showHelp($event)">Help</button>
+
+    <!-- 3. Two-Way Binding (Banana in a Box Syntax) -->
+    <input type="text" [(ngModel)]="item">
+
+    <!-- 4. Interpolation -->
+    <span>My Order: {{item}}</span>
+
+</div>
