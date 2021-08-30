@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { SalesComponent } from './components/home-area/sales/sales.component';
 import { LocationComponent } from './components/home-area/location/location.component';
 import { SloganComponent } from './components/home-area/slogan/slogan.component';
+import { ClockComponent } from './components/home-area/clock/clock.component';
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import { SloganComponent } from './components/home-area/slogan/slogan.component'
         OrderComponent,
         SalesComponent,
         LocationComponent,
-        SloganComponent
+        SloganComponent,
+        ClockComponent
     ],
     imports: [
         BrowserModule,
