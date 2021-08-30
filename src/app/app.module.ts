@@ -14,6 +14,7 @@ import { SalesComponent } from './components/home-area/sales/sales.component';
 import { LocationComponent } from './components/home-area/location/location.component';
 import { SloganComponent } from './components/home-area/slogan/slogan.component';
 import { ClockComponent } from './components/home-area/clock/clock.component';
+import { TipComponent } from './components/home-area/tip/tip.component';
 
 @NgModule({
     declarations: [
@@ -28,7 +29,8 @@ import { ClockComponent } from './components/home-area/clock/clock.component';
         SalesComponent,
         LocationComponent,
         SloganComponent,
-        ClockComponent
+        ClockComponent,
+        TipComponent
     ],
     imports: [
         BrowserModule,

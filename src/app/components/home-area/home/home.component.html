@@ -16,6 +16,11 @@
     <app-slogan slogan="Odai" color="green"></app-slogan>
     <app-slogan slogan="Hallo Bitchezzz!!!" color="yellow"></app-slogan>
 
+    <!-- Lifecycle Hook -->
     <app-clock></app-clock>
+
+    <app-tip (tipSelected)=displayTip($event)></app-tip>
+    <!-- Events From Child -> Parent -->
+    <span class="box">Tip to Send: {{tipValue}} </span>
 </div>
 

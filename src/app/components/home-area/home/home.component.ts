@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 // ng g c components/home-area/home
 
@@ -7,12 +7,12 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
+    
+    public tipValue:number;
 
-
-    constructor() { }
-
-    ngOnInit(): void {
+    public displayTip(value:number):void{
+        this.tipValue = value;
     }
 
 }
