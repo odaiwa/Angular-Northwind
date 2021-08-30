@@ -15,6 +15,8 @@ import { LocationComponent } from './components/home-area/location/location.comp
 import { SloganComponent } from './components/home-area/slogan/slogan.component';
 import { ClockComponent } from './components/home-area/clock/clock.component';
 import { TipComponent } from './components/home-area/tip/tip.component';
+import { PricingComponent } from './components/home-area/pricing/pricing.component';
+import { CalcService } from './services/calc.service';
 
 @NgModule({
     declarations: [
@@ -30,7 +32,8 @@ import { TipComponent } from './components/home-area/tip/tip.component';
         LocationComponent,
         SloganComponent,
         ClockComponent,
-        TipComponent
+        TipComponent,
+        PricingComponent
     ],
     imports: [
         BrowserModule,
@@ -38,7 +41,7 @@ import { TipComponent } from './components/home-area/tip/tip.component';
         FormsModule
     ],
     exports: [],
-    providers: [],
+    //providers: [CalcService],//Create calcServies Object for the entire application. Cause is it's in app.moudle.
     bootstrap: [LayoutComponent]
 })
 export class AppModule { }
