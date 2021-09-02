@@ -6,3 +6,8 @@ nav {
 a {
     margin-top: 20px;
 }
+.active{
+    color:green;
+    font-weight: bold;
+    font-family: Arial;
+}

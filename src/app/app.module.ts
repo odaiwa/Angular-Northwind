@@ -18,7 +18,12 @@ import { TipComponent } from './components/home-area/tip/tip.component';
 import { PricingComponent } from './components/home-area/pricing/pricing.component';
 import { CalcService } from './services/calc.service';
 import { ColorComponent } from './components/home-area/color/color.component';
-
+import { ProductListComponent } from './components/products-area/product-list/product-list.component';
+import { AboutComponent } from './components/about-area/about/about.component';
+import { PageNotFoundComponent } from './components/layout-area/page-not-found/page-not-found.component';
+import { ProductDetailsComponent } from './components/products-area/product-details/product-details.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ProductCardComponent } from './components/products-area/product-card/product-card.component'
 @NgModule({
     declarations: [
         LayoutComponent,
@@ -35,12 +40,18 @@ import { ColorComponent } from './components/home-area/color/color.component';
         ClockComponent,
         TipComponent,
         PricingComponent,
-        ColorComponent
+        ColorComponent,
+        ProductListComponent,
+        AboutComponent,
+        PageNotFoundComponent,
+        ProductDetailsComponent,
+        ProductCardComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
-        FormsModule
+        FormsModule,
+        HttpClientModule
     ],
     exports: [],
     //providers: [CalcService],//Create calcServies Object for the entire application. Cause is it's in app.moudle.
