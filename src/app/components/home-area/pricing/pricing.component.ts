@@ -17,12 +17,8 @@ export class PricingComponent {
 
   public showSummery():void{
     const arr=[10,20,30,40];
-    
-    
     const sum = this.myCalc.getSum(arr);
-
     console.log("Sum : "+sum);
-
   }
 
 }

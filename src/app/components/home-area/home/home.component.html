@@ -25,5 +25,8 @@
 
     <!-- Services -->
     <app-pricing></app-pricing>
+
+    <app-color (colorSelected)=displayColor($event)></app-color>
+    <span class="box">Color Selected = {{colorSelected}}</span>
 </div>
 

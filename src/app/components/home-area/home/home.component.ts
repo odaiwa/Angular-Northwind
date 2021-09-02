@@ -10,9 +10,12 @@ import { Component } from '@angular/core';
 export class HomeComponent {
     
     public tipValue:number;
-
+    public colorSelected:string;
     public displayTip(value:number):void{
         this.tipValue = value;
+    }
+    public displayColor(value:string):void{
+        this.colorSelected = value;
     }
 
 }

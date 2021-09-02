@@ -17,6 +17,7 @@ import { ClockComponent } from './components/home-area/clock/clock.component';
 import { TipComponent } from './components/home-area/tip/tip.component';
 import { PricingComponent } from './components/home-area/pricing/pricing.component';
 import { CalcService } from './services/calc.service';
+import { ColorComponent } from './components/home-area/color/color.component';
 
 @NgModule({
     declarations: [
@@ -33,7 +34,8 @@ import { CalcService } from './services/calc.service';
         SloganComponent,
         ClockComponent,
         TipComponent,
-        PricingComponent
+        PricingComponent,
+        ColorComponent
     ],
     imports: [
         BrowserModule,
