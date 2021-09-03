@@ -14,7 +14,7 @@ button {
 }
 
 span {
-    color: red;
-    margin: 0 20px;
-    position: absolute;
+    color: red !important;
+    margin: 0 20px !important;
+    position: absolute !important;
 }
