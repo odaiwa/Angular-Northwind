@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductModel } from 'src/app/models/product-model';
+import { ProductsService } from 'src/app/services/products.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -11,17 +12,17 @@ import { environment } from 'src/environments/environment';
 })
 export class ProductDetailsComponent implements OnInit {
 
-    constructor(private myActivedRouter: ActivatedRoute, private http: HttpClient) { } //DI
+    constructor(private myActivatedRoute: ActivatedRoute, private myProductsService: ProductsService) { } //DI
     public imageUrl :string;
     public product: ProductModel;
     
 
     async ngOnInit() {
         try {
-            const id = +this.myActivedRouter.snapshot.params.id;
-            this.product = await this.http.get<ProductModel>(environment.productsUrl + id).toPromise();
+            const id = +this.myActivatedRoute.snapshot.params.id;
+            this.product = await this.myProductsService.getOneProduct(id);
             this.imageUrl = environment.productImagesUrl + this.product.imageName;
-        } catch (err) {
+        } catch (err:any) {
             console.log(err.message);
         }
     }

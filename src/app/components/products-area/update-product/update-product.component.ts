@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProductModel } from 'src/app/models/product-model';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-update-product',
@@ -30,7 +31,7 @@ export class UpdateProductComponent implements OnInit {
 
   });
 
-  constructor(private http: HttpClient, private myActivatedRoute: ActivatedRoute, private myRouter: Router) { }
+  constructor(private myProductService:ProductsService, private myActivatedRoute: ActivatedRoute, private myRouter: Router) { }
 
   public async update() {
     try {
@@ -39,16 +40,8 @@ export class UpdateProductComponent implements OnInit {
       this.product.price = this.priceControl.value;
       this.product.stock = this.stockControl.value;
 
-      const myFormData = new FormData();
-
-      myFormData.append("name", this.product.name);
-      myFormData.append("price", this.product.price.toString());
-      myFormData.append("stock", this.product.stock.toString());
-      myFormData.append("image", this.product.image.item(0));
-
-      const info = await this.http.put<ProductModel>(environment.productsUrl + this.product.id, myFormData).toPromise();
-
-      console.log(info.id);
+      const updatedProduct = await this.myProductService.UpdateProductAsync(this.product);
+      console.log(updatedProduct.id);
       this.myRouter.navigateByUrl("/products/details/"+this.product.id);
 
     } catch (err) {
@@ -64,10 +57,9 @@ export class UpdateProductComponent implements OnInit {
   async ngOnInit() {
     try {
 
-      this.product.id = this.myActivatedRoute.snapshot.params.id;
-
-      this.product = await this.http.get<ProductModel>(environment.productsUrl + this.product.id).toPromise();
-      this.nameControl.setValue(this.product.name);
+      this.product.id = +this.myActivatedRoute.snapshot.params.id;
+      
+      this.product = await this.myProductService.getOneProduct(this.product.id);      this.nameControl.setValue(this.product.name);
       this.priceControl.setValue(this.product.price);
       this.stockControl.setValue(this.product.stock);
       this.imageControl.setValue(this.product.image);
