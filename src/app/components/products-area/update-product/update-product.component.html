@@ -5,7 +5,8 @@
 
         <label>Name: </label>
         <input type="text" [formControl] = "nameControl">
-        <span *ngIf="nameControl.invalid && nameControl.touched">Missing name</span>
+        <span *ngIf="nameControl.errors?.invalid && nameControl.touched">Missing name</span>
+        <span *ngIf="nameControl.errors?.pattern && nameControl.touched">Missing name</span>
 
         <label>Price: </label>
         <input type="number" step="0.01" [formControl] = "priceControl">

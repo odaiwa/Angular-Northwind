@@ -16,7 +16,7 @@ export class UpdateProductComponent implements OnInit {
 
   private product = new ProductModel();
 
-  public nameControl = new FormControl(null,Validators.required);
+  public nameControl = new FormControl(null,[Validators.required,Validators.pattern("^[A-Z].*$")]);
   public priceControl = new FormControl(null,Validators.required);
   public stockControl = new FormControl(null,Validators.required);
   public imageControl = new FormControl(null,Validators.required);
@@ -70,7 +70,7 @@ export class UpdateProductComponent implements OnInit {
       this.nameControl.setValue(this.product.name);
       this.priceControl.setValue(this.product.price);
       this.stockControl.setValue(this.product.stock);
-      // this.imageControl.setValue(this.product.image);
+      this.imageControl.setValue(this.product.image);
     } catch (err) {
       console.log(err);
     }
