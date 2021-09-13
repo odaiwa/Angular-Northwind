@@ -5,6 +5,7 @@
         <label>Name: </label>
         <input type="text" name="name" [(ngModel)]="product.name" required #nameInfo="ngModel" />
         <span *ngIf="nameInfo.invalid && nameInfo.touched">Missing name</span>
+        
         <label>Price: </label>
         <input type="number" step="0.01" required name="price" [(ngModel)]="product.price" required #priceInfo="ngModel" />
         <span *ngIf="priceInfo.invalid && stockInfo.touched">Missing name</span>

@@ -6,6 +6,7 @@ import { PageNotFoundComponent } from './components/layout-area/page-not-found/p
 import { AddProductComponent } from './components/products-area/add-product/add-product.component';
 import { ProductDetailsComponent } from './components/products-area/product-details/product-details.component';
 import { ProductListComponent } from './components/products-area/product-list/product-list.component';
+import { UpdateProductComponent } from './components/products-area/update-product/update-product.component';
 
 const routes: Routes = [
     {path:"home",component:HomeComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
     {path:"products/details/:id",component:ProductDetailsComponent},
     {path:"about",component:AboutComponent},
     {path:"products/new",component:AddProductComponent},
+    {path:"products/edit/:id",component:UpdateProductComponent},
     {path:"", redirectTo:"/home",pathMatch:"full"}, // pathMatch : full = exact match
     {path:"**",component:PageNotFoundComponent} // 404
 ];

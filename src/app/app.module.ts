@@ -24,7 +24,8 @@ import { PageNotFoundComponent } from './components/layout-area/page-not-found/p
 import { ProductDetailsComponent } from './components/products-area/product-details/product-details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductCardComponent } from './components/products-area/product-card/product-card.component';
-import { AddProductComponent } from './components/products-area/add-product/add-product.component'
+import { AddProductComponent } from './components/products-area/add-product/add-product.component';
+import { UpdateProductComponent } from './components/products-area/update-product/update-product.component'
 @NgModule({
     declarations: [
         LayoutComponent,
@@ -47,7 +48,8 @@ import { AddProductComponent } from './components/products-area/add-product/add-
         PageNotFoundComponent,
         ProductDetailsComponent,
         ProductCardComponent,
-        AddProductComponent
+        AddProductComponent,
+        UpdateProductComponent
     ],
     imports: [
         BrowserModule,
