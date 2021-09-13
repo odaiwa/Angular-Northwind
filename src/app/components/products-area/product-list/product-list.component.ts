@@ -16,9 +16,10 @@ export class ProductListComponent implements OnInit {
 
     async ngOnInit() {
         try{
+            
             this.allProducts = await this.http.get<ProductModel[]>(environment.productsUrl).toPromise();
-            console.log(this.allProducts);
-        }catch(err){
+            
+        }catch(err:any){
             console.log(err.message)
         }
     }
