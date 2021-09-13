@@ -9,7 +9,7 @@ import { HomeComponent } from './components/home-area/home/home.component';
 import { DiscountComponent } from './components/home-area/discount/discount.component';
 import { BuyNowComponent } from './components/home-area/buy-now/buy-now.component';
 import { OrderComponent } from './components/home-area/order/order.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SalesComponent } from './components/home-area/sales/sales.component';
 import { LocationComponent } from './components/home-area/location/location.component';
 import { SloganComponent } from './components/home-area/slogan/slogan.component';
@@ -55,7 +55,8 @@ import { UpdateProductComponent } from './components/products-area/update-produc
         BrowserModule,
         AppRoutingModule,
         FormsModule,
-        HttpClientModule
+        HttpClientModule,
+        ReactiveFormsModule
     ],
     exports: [],
     //providers: [CalcService],//Create calcServies Object for the entire application. Cause is it's in app.moudle.
