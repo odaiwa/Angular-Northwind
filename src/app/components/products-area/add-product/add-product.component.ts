@@ -35,7 +35,7 @@ export class AddProductComponent {
             this.myRouter.navigateByUrl("/products");
         }
         catch(err) {
-            alert(err.message);
+            alert(err);
         }
     }
 

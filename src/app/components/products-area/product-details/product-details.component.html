@@ -1,13 +1,12 @@
-<div class="box">
-    <h2>Product Details</h2>
-    <div *ngIf="product">
-      <h3>{{ product.name }}</h3>
-      <h3>Price: {{ product.price | currency }}</h3>
-      <h3>Stock: {{ product.stock }}</h3>
-      <img [src]="imageUrl" />
-      <a routerLink="/products/edit/{{product.id}}"> Edit </a> 
-      <span> | </span>
-      <a routerLink="/products"> Back to list </a>
-    </div>
+<div class="box" *ngIf="product">
+  <h2>Product Details</h2>
+  <div>
+    <h3>{{ product.name }}</h3>
+    <h3>Price: {{ product.price | currency }}</h3>
+    <h3>Stock: {{ product.stock }}</h3>
+    <img [src]="imageUrl" />
+    <a routerLink="/products/edit/{{product.id}}"> Edit </a>
+    <span> | </span>
+    <a routerLink="/products"> Back to list </a>
   </div>
-  
+</div>
