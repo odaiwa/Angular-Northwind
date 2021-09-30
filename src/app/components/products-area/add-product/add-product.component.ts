@@ -1,3 +1,4 @@
+import { IncompleteGuard } from './../../../services/incomplete.guard';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
@@ -16,14 +17,19 @@ export class AddProductComponent {
 
     constructor(private myProductsService:ProductsService, private myRouter:Router){}
 
+    
+    public ChangeOccurred(){
+        IncompleteGuard.canLeave = false;
+    }
 
     public setImage(args:Event):void{
         this.product.image = (args.target as HTMLInputElement).files;
     }
-    
+
     public async add() {
         try {
             await this.myProductsService.AddProductAsync(this.product);
+            IncompleteGuard.canLeave = true;
             console.log("Product added")
             // Redirect:
             this.myRouter.navigateByUrl("/products");
@@ -32,6 +38,7 @@ export class AddProductComponent {
             alert(err);
         }
     }
+
 
 
 

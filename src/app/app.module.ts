@@ -22,13 +22,15 @@ import { ProductListComponent } from './components/products-area/product-list/pr
 import { AboutComponent } from './components/about-area/about/about.component';
 import { PageNotFoundComponent } from './components/layout-area/page-not-found/page-not-found.component';
 import { ProductDetailsComponent } from './components/products-area/product-details/product-details.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ProductCardComponent } from './components/products-area/product-card/product-card.component';
 import { AddProductComponent } from './components/products-area/add-product/add-product.component';
 import { UpdateProductComponent } from './components/products-area/update-product/update-product.component';
 import { RegisterComponent } from './components/auth-area/register/register.component';
 import { LoginComponent } from './components/auth-area/login/login.component';
 import { LogoutComponent } from './components/auth-area/logout/logout.component'
+import { AuthInterceptor } from './services/auth.interceptor';
+import { AuthMenuComponent } from './components/auth-area/auth-menu/auth-menu.component';
 @NgModule({
     declarations: [
         LayoutComponent,
@@ -55,7 +57,8 @@ import { LogoutComponent } from './components/auth-area/logout/logout.component'
         UpdateProductComponent,
         RegisterComponent,
         LoginComponent,
-        LogoutComponent
+        LogoutComponent,
+        AuthMenuComponent
     ],
     imports: [
         BrowserModule,
@@ -66,6 +69,13 @@ import { LogoutComponent } from './components/auth-area/logout/logout.component'
     ],
     exports: [],
     //providers: [CalcService],//Create calcServies Object for the entire application. Cause is it's in app.moudle.
+    // Register the interceptor so any request will invoke it: 
+    providers: [{ 
+        provide: HTTP_INTERCEPTORS, // Register the interceptor
+        useClass: AuthInterceptor, // Our interceptor class
+        multi: true // Can register it several times if needed
+    }],
+
     bootstrap: [LayoutComponent]
 })
 export class AppModule { }

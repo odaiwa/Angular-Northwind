@@ -1,3 +1,6 @@
+import { IncompleteGuard } from './services/incomplete.guard';
+import { AuthGuard } from './services/auth.guard';
+import { LogoutComponent } from './components/auth-area/logout/logout.component';
 import { LoginComponent } from './components/auth-area/login/login.component';
 import { RegisterComponent } from './components/auth-area/register/register.component';
 import { NgModule } from '@angular/core';
@@ -14,11 +17,14 @@ const routes: Routes = [
     {path:"home",component:HomeComponent},
     {path:"register",component:RegisterComponent},
     {path:"login",component:LoginComponent},
+    {path:"logout",component:LogoutComponent},
     {path:"products",component:ProductListComponent},
     {path:"products/details/:id",component:ProductDetailsComponent},
-    {path:"about",component:AboutComponent},
-    {path:"products/new",component:AddProductComponent},
-    {path:"products/edit/:id",component:UpdateProductComponent},
+    {path:"about", component:AboutComponent},
+
+    {path:"products/new",canActivate:[AuthGuard],canDeactivate:[IncompleteGuard],component:AddProductComponent},
+    {path:"products/edit/:id",canActivate:[AuthGuard],component:UpdateProductComponent},
+
     {path:"", redirectTo:"/home",pathMatch:"full"}, // pathMatch : full = exact match
     {path:"**",component:PageNotFoundComponent} // 404
 ];

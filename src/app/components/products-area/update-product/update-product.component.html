@@ -4,20 +4,20 @@
     <form [formGroup]="productForm" (submit)="update()">
 
         <label>Name: </label>
-        <input type="text" [formControl] = "nameControl">
+        <input type="text" [formControl] = "nameControl"  (change)="ChangeOccurred()">
         <span *ngIf="nameControl.errors?.invalid && nameControl.touched">Missing name</span>
         <span *ngIf="nameControl.errors?.pattern && nameControl.touched">Missing name</span>
 
         <label>Price: </label>
-        <input type="number" step="0.01" [formControl] = "priceControl">
+        <input type="number" step="0.01" [formControl] = "priceControl" (change)="ChangeOccurred()">
         <span *ngIf="priceControl.invalid && priceControl.touched">Missing name</span>
 
         <label>Stock: </label>
-        <input type="number" [formControl] = "stockControl">
+        <input type="number" [formControl] = "stockControl" (change)="ChangeOccurred()">
         <span *ngIf="stockControl.invalid && stockControl.touched">Missing name</span>
 
         <label>Image: </label>
-        <input type="file" [formControl] = "imageControl" (change)="setImage($event)"> 
+        <input type="file" [formControl] = "imageControl" (change)="setImage($event) ; ChangeOccurred()" > 
         <span *ngIf="imageControl.invalid && imageControl.touched">Missing name</span>
 
         <button>Update</button>

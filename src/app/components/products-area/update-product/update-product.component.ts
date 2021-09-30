@@ -1,3 +1,4 @@
+import { IncompleteGuard } from './../../../services/incomplete.guard';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -17,10 +18,10 @@ export class UpdateProductComponent implements OnInit {
 
   private product = new ProductModel();
 
-  public nameControl = new FormControl(null,[Validators.required,Validators.pattern("^[A-Z].*$")]);
-  public priceControl = new FormControl(null,Validators.required);
-  public stockControl = new FormControl(null,Validators.required);
-  public imageControl = new FormControl(null,Validators.required);
+  public nameControl = new FormControl(null, [Validators.required, Validators.pattern("^[A-Z].*$")]);
+  public priceControl = new FormControl(null, Validators.required);
+  public stockControl = new FormControl(null, Validators.required);
+  public imageControl = new FormControl(null, Validators.required);
 
 
   public productForm = new FormGroup({
@@ -30,8 +31,10 @@ export class UpdateProductComponent implements OnInit {
     imageControl: this.imageControl,
 
   });
-
-  constructor(private myProductService:ProductsService, private myActivatedRoute: ActivatedRoute, private myRouter: Router) { }
+  public ChangeOccurred() {
+    IncompleteGuard.canLeave = false;
+  }
+  constructor(private myProductService: ProductsService, private myActivatedRoute: ActivatedRoute, private myRouter: Router) { }
 
   public async update() {
     try {
@@ -42,7 +45,7 @@ export class UpdateProductComponent implements OnInit {
 
       const updatedProduct = await this.myProductService.UpdateProductAsync(this.product);
       console.log(updatedProduct.id);
-      this.myRouter.navigateByUrl("/products/details/"+this.product.id);
+      this.myRouter.navigateByUrl("/products/details/" + this.product.id);
 
     } catch (err) {
       console.log(err);
@@ -58,8 +61,8 @@ export class UpdateProductComponent implements OnInit {
     try {
 
       this.product.id = +this.myActivatedRoute.snapshot.params.id;
-      
-      this.product = await this.myProductService.getOneProduct(this.product.id);      this.nameControl.setValue(this.product.name);
+
+      this.product = await this.myProductService.getOneProduct(this.product.id); this.nameControl.setValue(this.product.name);
       this.priceControl.setValue(this.product.price);
       this.stockControl.setValue(this.product.stock);
       this.imageControl.setValue(this.product.image);

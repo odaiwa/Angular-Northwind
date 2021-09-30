@@ -12,7 +12,7 @@ export class AuthState {
 }
 
 // Auth Action Types: 
-export enum AuthActionType {
+enum AuthActionType {
     UserRegistered = "UserRegistered",
     UserLoggedIn = "UserLoggedIn",
     UserLoggedOut = "UserLoggedOut"
@@ -22,6 +22,17 @@ export enum AuthActionType {
 export interface AuthAction {
     type: AuthActionType;
     payload?: any; // Here payload is optional because we have no data on UserLoggedOut.
+}
+
+// Auth Action Creators: 
+export function userRegisteredAction(registeredUser: UserModel): AuthAction {
+    return { type: AuthActionType.UserRegistered, payload: registeredUser };
+}
+export function userLoggedInAction(loggedInUser: UserModel): AuthAction {
+    return { type: AuthActionType.UserLoggedIn, payload: loggedInUser };
+}
+export function userLoggedOutAction(): AuthAction {
+    return { type: AuthActionType.UserLoggedOut };
 }
 
 // Auth Reducer: 

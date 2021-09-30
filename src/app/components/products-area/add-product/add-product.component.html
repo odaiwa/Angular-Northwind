@@ -3,19 +3,19 @@
 
     <form (submit)="add()" #formInfo="ngForm">
         <label>Name: </label>
-        <input type="text" name="name" [(ngModel)]="product.name" pattern="^[A-Z].*$" required #nameInfo="ngModel" />
+        <input type="text" name="name" [(ngModel)]="product.name" required #nameInfo="ngModel" (change)="ChangeOccurred()"/>
         <span *ngIf="nameInfo.invalid && nameInfo.touched">Missing name</span>
         
         <label>Price: </label>
-        <input type="number" step="0.01" required name="price" [(ngModel)]="product.price" required #priceInfo="ngModel" />
+        <input type="number" step="0.01" required name="price" [(ngModel)]="product.price" required #priceInfo="ngModel" (change)="ChangeOccurred()"/>
         <span *ngIf="priceInfo.invalid && stockInfo.touched">Missing name</span>
 
         <label>Stock: </label>
-        <input type="number" name="stock" required [(ngModel)]="product.stock" required #stockInfo="ngModel"/>
+        <input type="number" name="stock" required [(ngModel)]="product.stock" required #stockInfo="ngModel" (change)="ChangeOccurred()"/>
         <span *ngIf="stockInfo.invalid && stockInfo.touched">Missing name</span>
 
         <label>Image: </label>
-        <input type="file" accept="image/*" name="image" (change)="setImage($event)" />
+        <input type="file" accept="image/*" name="image" (change)="setImage($event);ChangeOccurred()" />
 
         <button [disabled]="formInfo.form.invalid">Add</button>
     </form>

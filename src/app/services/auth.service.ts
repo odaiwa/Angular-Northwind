@@ -1,4 +1,4 @@
-import { AuthActionType } from './../redux/auth-state';
+import { userRegisteredAction,userLoggedInAction,userLoggedOutAction } from './../redux/auth-state';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -18,17 +18,17 @@ export class AuthService {
 
   public async register(user: UserModel): Promise<void> {
     const addedUser = await this.http.post<UserModel>(environment.registerUrl, user).toPromise();
-    store.dispatch({ type: AuthActionType.UserRegistered, payload: addedUser });
+    store.dispatch(userRegisteredAction(addedUser));
   }
 
 
   public async login(user: CredentialsModel): Promise<void> {
     const loggedInUser = await this.http.post<UserModel>(environment.loginUrl, user).toPromise();
-    store.dispatch({ type: AuthActionType.UserLoggedIn, payload: loggedInUser });
+    store.dispatch(userLoggedInAction(loggedInUser));
   }
 
   public logout():void{
-    store.dispatch({type:AuthActionType.UserLoggedOut});
+    store.dispatch(userLoggedOutAction());
   }
 
 }

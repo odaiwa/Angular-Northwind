@@ -4,8 +4,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-logout',
-  templateUrl: './logout.component.html',
-  styleUrls: ['./logout.component.css']
+  template: ""
 })
 export class LogoutComponent implements OnInit {
 
@@ -14,6 +13,7 @@ export class LogoutComponent implements OnInit {
   ngOnInit(): void {
     this.authService.logout();
     this.router.navigateByUrl("home");
+    console.log("you're logged out")
   }
 
 }
