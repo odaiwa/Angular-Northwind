@@ -3,7 +3,7 @@
 
     <form (submit)="add()" #formInfo="ngForm">
         <label>Name: </label>
-        <input type="text" name="name" [(ngModel)]="product.name" required #nameInfo="ngModel" />
+        <input type="text" name="name" [(ngModel)]="product.name" pattern="^[A-Z].*$" required #nameInfo="ngModel" />
         <span *ngIf="nameInfo.invalid && nameInfo.touched">Missing name</span>
         
         <label>Price: </label>

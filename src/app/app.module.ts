@@ -25,7 +25,10 @@ import { ProductDetailsComponent } from './components/products-area/product-deta
 import { HttpClientModule } from '@angular/common/http';
 import { ProductCardComponent } from './components/products-area/product-card/product-card.component';
 import { AddProductComponent } from './components/products-area/add-product/add-product.component';
-import { UpdateProductComponent } from './components/products-area/update-product/update-product.component'
+import { UpdateProductComponent } from './components/products-area/update-product/update-product.component';
+import { RegisterComponent } from './components/auth-area/register/register.component';
+import { LoginComponent } from './components/auth-area/login/login.component';
+import { LogoutComponent } from './components/auth-area/logout/logout.component'
 @NgModule({
     declarations: [
         LayoutComponent,
@@ -49,7 +52,10 @@ import { UpdateProductComponent } from './components/products-area/update-produc
         ProductDetailsComponent,
         ProductCardComponent,
         AddProductComponent,
-        UpdateProductComponent
+        UpdateProductComponent,
+        RegisterComponent,
+        LoginComponent,
+        LogoutComponent
     ],
     imports: [
         BrowserModule,

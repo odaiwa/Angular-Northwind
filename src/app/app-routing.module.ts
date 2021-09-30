@@ -1,3 +1,5 @@
+import { LoginComponent } from './components/auth-area/login/login.component';
+import { RegisterComponent } from './components/auth-area/register/register.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, UrlSegment } from '@angular/router';
 import { AboutComponent } from './components/about-area/about/about.component';
@@ -10,6 +12,8 @@ import { UpdateProductComponent } from './components/products-area/update-produc
 
 const routes: Routes = [
     {path:"home",component:HomeComponent},
+    {path:"register",component:RegisterComponent},
+    {path:"login",component:LoginComponent},
     {path:"products",component:ProductListComponent},
     {path:"products/details/:id",component:ProductDetailsComponent},
     {path:"about",component:AboutComponent},

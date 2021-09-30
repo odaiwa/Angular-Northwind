@@ -2,7 +2,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { ProductModel } from 'src/app/models/product-model';
 import { Injectable } from '@angular/core';
-import store from '../redux/Store';
+import store from '../redux/store';
 import { ProductsActionType } from '../redux/products-state';
 
 @Injectable({
