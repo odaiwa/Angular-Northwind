@@ -1,3 +1,4 @@
+import { NotifyService } from './../../../services/notify.service';
 import { IncompleteGuard } from './../../../services/incomplete.guard';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
@@ -15,7 +16,7 @@ export class AddProductComponent {
 
     public product = new ProductModel();
 
-    constructor(private myProductsService:ProductsService, private myRouter:Router){}
+    constructor(private myProductsService:ProductsService, private myRouter:Router,private notify:NotifyService){}
 
     
     public ChangeOccurred(){
@@ -30,12 +31,12 @@ export class AddProductComponent {
         try {
             await this.myProductsService.AddProductAsync(this.product);
             IncompleteGuard.canLeave = true;
-            console.log("Product added")
+            this.notify.success("Product added")
             // Redirect:
             this.myRouter.navigateByUrl("/products");
         }
         catch(err) {
-            alert(err);
+            this.notify.error(err);
         }
     }
 

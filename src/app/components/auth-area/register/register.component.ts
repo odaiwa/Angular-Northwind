@@ -1,3 +1,4 @@
+import { NotifyService } from './../../../services/notify.service';
 import { Router } from '@angular/router';
 import { AuthService } from './../../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,7 +11,7 @@ import { UserModel } from 'src/app/models/user.model';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private myAuthService: AuthService,private myRouter:Router) { }
+  constructor(private myAuthService: AuthService,private myRouter:Router,private notify:NotifyService) { }
 
   ngOnInit(): void {
   }
@@ -20,10 +21,10 @@ export class RegisterComponent implements OnInit {
   public async register() {
     try {
       await this.myAuthService.register(this.user);
-      console.log("you are registered...");
+      this.notify.success("you are registered...");
       this.myRouter.navigateByUrl("home");
     } catch (err) {
-      console.log(err.message)
+      this.notify.error(err);
     }
   }
 

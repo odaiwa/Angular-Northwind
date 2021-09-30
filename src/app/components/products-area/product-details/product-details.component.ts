@@ -1,3 +1,4 @@
+import { NotifyService } from './../../../services/notify.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -12,7 +13,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ProductDetailsComponent implements OnInit {
 
-    constructor(private myActivatedRoute: ActivatedRoute, private myProductsService: ProductsService) { } //DI
+    constructor(private myActivatedRoute: ActivatedRoute, private myProductsService: ProductsService,private notify:NotifyService) { } //DI
     public imageUrl :string;
     public product: ProductModel;
     
@@ -23,7 +24,7 @@ export class ProductDetailsComponent implements OnInit {
             this.product = await this.myProductsService.getOneProduct(id);
             this.imageUrl = environment.productImagesUrl + this.product.imageName;
         } catch (err:any) {
-            console.log(err.message);
+            this.notify.error(err);
         }
     }
 

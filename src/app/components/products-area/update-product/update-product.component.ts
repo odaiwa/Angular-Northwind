@@ -1,3 +1,4 @@
+import { NotifyService } from './../../../services/notify.service';
 import { IncompleteGuard } from './../../../services/incomplete.guard';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
@@ -34,7 +35,7 @@ export class UpdateProductComponent implements OnInit {
   public ChangeOccurred() {
     IncompleteGuard.canLeave = false;
   }
-  constructor(private myProductService: ProductsService, private myActivatedRoute: ActivatedRoute, private myRouter: Router) { }
+  constructor(private myProductService: ProductsService, private myActivatedRoute: ActivatedRoute, private myRouter: Router,private notify:NotifyService) { }
 
   public async update() {
     try {
@@ -48,7 +49,7 @@ export class UpdateProductComponent implements OnInit {
       this.myRouter.navigateByUrl("/products/details/" + this.product.id);
 
     } catch (err) {
-      console.log(err);
+      this.notify.error(err);
     }
   }
 
@@ -67,7 +68,7 @@ export class UpdateProductComponent implements OnInit {
       this.stockControl.setValue(this.product.stock);
       this.imageControl.setValue(this.product.image);
     } catch (err) {
-      console.log(err);
+      this.notify.error(err);
     }
   }
 

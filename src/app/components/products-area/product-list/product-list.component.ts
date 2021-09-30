@@ -1,3 +1,4 @@
+import { NotifyService } from './../../../services/notify.service';
 import { Component, OnInit } from '@angular/core';
 import { ProductModel } from 'src/app/models/product-model';
 import { ProductsService } from 'src/app/services/products.service';
@@ -12,14 +13,14 @@ export class ProductListComponent implements OnInit {
 
     public allProducts:ProductModel[];
 
-    constructor(private myProductService:ProductsService) { } 
+    constructor(private myProductService:ProductsService,private notify:NotifyService) { } 
 
     async ngOnInit() {
         try{
             this.allProducts = await this.myProductService.getAllProductsAsync();
             
         }catch(err:any){
-            console.log(err.message)
+            this.notify.error(err.message)
         }
     }
 
