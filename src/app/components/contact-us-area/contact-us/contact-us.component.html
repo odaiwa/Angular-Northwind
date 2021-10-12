@@ -1,0 +1,35 @@
+<div class="box">
+    <h3>Contact Us</h3>
+
+    <form>
+        <mat-form-field>
+            <mat-label>Name: </mat-label>
+            <input matInput type="text" name="name" [(ngModel)]="contactUs.name" required #nameInfo="ngModel">
+            <mat-error *ngIf="nameInfo.invalid && nameInfo.touched">Missing name</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Email: </mat-label>
+            <input matInput type="email" name="email" [(ngModel)]="contactUs.email" required #emailInfo="ngModel">
+            <mat-error *ngIf="emailInfo.invalid && emailInfo.touched">Missing name</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Message: </mat-label>
+            <input matInput type="text" name="message" [(ngModel)]="contactUs.message" required #messageInfo="ngModel">
+            <mat-error *ngIf="messageInfo.invalid && messageInfo.touched">Missing name</mat-error>
+        </mat-form-field>
+
+
+        <mat-checkbox>I agree to get promotional emails</mat-checkbox>
+
+        <button mat-stroked-button>
+            <mat-icon>send</mat-icon>
+            Send
+        </button>
+        <button mat-stroked-button>
+            <mat-icon>delete</mat-icon>Reset
+        </button>
+
+    </form>
+</div>

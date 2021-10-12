@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Input } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { LayoutComponent } from './components/layout-area/layout/layout.component';
@@ -31,6 +31,16 @@ import { LoginComponent } from './components/auth-area/login/login.component';
 import { LogoutComponent } from './components/auth-area/logout/logout.component'
 import { AuthInterceptor } from './services/auth.interceptor';
 import { AuthMenuComponent } from './components/auth-area/auth-menu/auth-menu.component';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { MatButtonModule } from "@angular/material/button";
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MatIconModule } from "@angular/material/icon";
+
+import { ContactUsComponent } from './components/contact-us-area/contact-us/contact-us.component';
+
 @NgModule({
     declarations: [
         LayoutComponent,
@@ -58,17 +68,24 @@ import { AuthMenuComponent } from './components/auth-area/auth-menu/auth-menu.co
         RegisterComponent,
         LoginComponent,
         LogoutComponent,
-        AuthMenuComponent
+        AuthMenuComponent,
+        ContactUsComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         FormsModule,
         HttpClientModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        MatButtonModule,
+        MatCheckboxModule,
+        MatIconModule,
+        MatInputModule
+        
     ],
     exports: [],
-    //providers: [CalcService],//Create calcServies Object for the entire application. Cause is it's in app.moudle.
     // Register the interceptor so any request will invoke it: 
     providers: [{ 
         provide: HTTP_INTERCEPTORS, // Register the interceptor

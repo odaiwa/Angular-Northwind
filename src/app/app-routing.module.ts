@@ -1,3 +1,4 @@
+import { ContactUsComponent } from './components/contact-us-area/contact-us/contact-us.component';
 import { IncompleteGuard } from './services/incomplete.guard';
 import { AuthGuard } from './services/auth.guard';
 import { LogoutComponent } from './components/auth-area/logout/logout.component';
@@ -14,19 +15,23 @@ import { ProductListComponent } from './components/products-area/product-list/pr
 import { UpdateProductComponent } from './components/products-area/update-product/update-product.component';
 
 const routes: Routes = [
-    {path:"home",component:HomeComponent},
-    {path:"register",component:RegisterComponent},
-    {path:"login",component:LoginComponent},
-    {path:"logout",component:LogoutComponent},
-    {path:"products",component:ProductListComponent},
-    {path:"products/details/:id",component:ProductDetailsComponent},
-    {path:"about", component:AboutComponent},
+  { path: "home", component: HomeComponent },
+  //when we want to use lazy loading we use loadChildren with arrow function Promise
+  //only when user routes to supplier get the entire "SupplierModule from server"
+  { path: "suppliers", loadChildren: () => import('./components/suppliers-area/suppliers.module').then(m => m.SuppliersModule) },
+  { path: "register", component: RegisterComponent },
+  { path: "login", component: LoginComponent },
+  { path: "logout", canActivate: [AuthGuard], component: LogoutComponent },
+  { path: "products", component: ProductListComponent },
+  { path: "products/details/:id", component: ProductDetailsComponent },
+  { path: "about", component: AboutComponent },
+  { path: "contact-us", component: ContactUsComponent },
 
-    {path:"products/new",canActivate:[AuthGuard],canDeactivate:[IncompleteGuard],component:AddProductComponent},
-    {path:"products/edit/:id",canActivate:[AuthGuard],component:UpdateProductComponent},
+  { path: "products/new", canActivate: [AuthGuard], canDeactivate: [IncompleteGuard], component: AddProductComponent },
+  { path: "products/edit/:id", canActivate: [AuthGuard], component: UpdateProductComponent },
 
-    {path:"", redirectTo:"/home",pathMatch:"full"}, // pathMatch : full = exact match
-    {path:"**",component:PageNotFoundComponent} // 404
+  { path: "", redirectTo: "/home", pathMatch: "full" }, // pathMatch : full = exact match
+  { path: "**", component: PageNotFoundComponent } // 404
 ];
 
 @NgModule({
